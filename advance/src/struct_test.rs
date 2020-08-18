@@ -18,7 +18,7 @@ pub fn user_build() {
         active: true,
     };
 
-    // 格式化输出
+    // 格式化输出:q
     println!("user is {:?}", user);
     println!("user is {:#?}", user);
 
@@ -40,7 +40,6 @@ mod tests {
     // 实例化结构体
     #[test]
     fn test_user() {
-
         println!("123123131");
         user_build();
     }
