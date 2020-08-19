@@ -18,12 +18,13 @@ async fn test_client_listen_0() {
         match client.listen_and_request().await {
             Ok(result) => {
                 let configuration = result
-                    .into_first()?
-                    .deserialize_configurations::<serde_json::Value>()?;
+                    .into_first().unwrap()
+                    .deserialize_configurations::<serde_json::Value>().unwrap();
                 let opt = configuration.get("panshi-agent.admin_host");
                 match opt {
                     Some(v) => {
-                        dbg!(v);
+                        println!("value: {}", v.as_str().unwrap());
+                        //dbg!(v.as_str().unwrap());
                     },
                     None => {},
                 }
