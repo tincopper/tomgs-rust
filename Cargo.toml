@@ -3,4 +3,5 @@ members = [
     "advance",
     "greeting",
     "guessing_game",
+    "apollo-client-demo",
 ]

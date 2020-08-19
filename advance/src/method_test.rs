@@ -33,7 +33,7 @@ pub fn test_area() {
     let is_hold = rectangle.can_hold(&rectangle1);
     println!("can hold : {}", is_hold);
 
-    // 这个就类似于 String::from("test")
+    // 这个就类似于 String::from("tests")
     let r = Rectangle::square(20);
     println!("square info: {:#?}", r);
 }

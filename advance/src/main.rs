@@ -102,8 +102,8 @@ fn main() {
     error_handler::test_panic();
     error_handler::test_recovery();
 
-    // struct test
+    // struct tests
     struct_test::user_build();
-    // method test
+    // method tests
     method_test::test_area();
 }
