@@ -16,8 +16,8 @@ async fn main() {
     });
 
     loop {
-        let recver = rx.recv();
-        match recver {
+        let recv = rx.recv();
+        match recv {
             Ok(v) => println!("recv: {}", v.as_str().unwrap()),
             Err(e) => println!("error: {}", e),
         };
