@@ -20,6 +20,9 @@ async fn test_client_listen_0() {
                 let configuration = result
                     .into_first().unwrap()
                     .deserialize_configurations::<serde_json::Value>().unwrap();
+
+                println!("{}", configuration);
+
                 let opt = configuration.get("panshi-agent.admin_host");
                 match opt {
                     Some(v) => {
