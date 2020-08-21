@@ -1,0 +1,16 @@
+server:
+  proxy:
+    hostport: 0.0.0.0:5432
+  admin:
+    hostport: 127.0.0.1:8000
+
+health_check:
+  delay: 60
+  query: select now();
+
+client_config:
+  config-server-url: http://172.20.183.155:8080
+  app-id: panshi-agent-dev
+  cluster-name: default
+  namespace-names: [application]
+
