@@ -30,7 +30,7 @@ impl ApolloClient {
                 for (key, value) in config {
                     config_map.insert(key.to_string(), value.to_string());
                 }
-            }
+            },
             Err(e) => println!("receive error: {}", e),
         }
 
@@ -48,10 +48,10 @@ impl ApolloClient {
                 for (key, value) in config {
                     self.config.insert(key.to_string(), value.to_string());
                 }
-            }
+            },
             Err(_e) => {
                 //ignore
-            }
+            },
         }
 
         // Option<&String> ==> Option<&str>
@@ -76,11 +76,11 @@ pub async fn config_apollo(sender: Sender<Value>) {
 
                 sender.send(configuration.clone()).unwrap();
                 println!("config update success, config: {}.", configuration)
-            }
+            },
             Err(err) => {
                 println!("Listen apollo config change failed: {:?}", err);
                 thread::sleep(Duration::from_secs(3));
-            }
+            },
         };
     }
 }
