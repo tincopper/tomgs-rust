@@ -8,7 +8,7 @@ Rust 有一套独特的处理异常情况的机制，它并不像其它语言中
 对于可恢复错误用 Result<T, E> 类来处理，对于不可恢复错误使用 panic! 宏来处理。
 */
 use std::io;
-use std::io::Read;
+use std::io::{Read, ErrorKind, Error};
 use std::fs::File;
 
 pub fn test_panic() {
@@ -27,6 +27,77 @@ pub fn test_recovery() {
 }
 
 pub fn test_recovery2() {
+    let file = File::open("hello.txt");
+    let file = match file {
+        Ok(file) => file,
+        Err(e) => panic!("There was problem opening the file {:?}", e),
+    };
+}
+
+pub fn test_recovery3() {
+    let file = File::open("hello.txt");
+    let file = match file {
+        Ok(file) => file,
+        Err(e) => panic!("There was problem opening the file {:?}", e),
+    };
+}
+
+pub fn test_recovery4() {
+    let file = File::open("hello.txt");
+    let file = match file {
+        Ok(file) => file,
+        Err(e) => match e.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt"){
+                Ok(fc) => fc,
+                Err(e) => panic!("create file error: {:?}", e),
+            },
+            other_err=> panic!("opening file error: {:?}", other_err),
+        }
+    };
+}
+
+pub fn test_recovery5() {
+    let f = File::open("hello.txt").map_err(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("create file error: {:?}", e);
+            })
+        } else {
+            panic!("opening file error: {:?}", other_err)
+        }
+    });
+}
+
+/// 验证错误传播
+pub fn read_username_from_file() -> Result<String, Error> {
+    let file = File::open("hello.txt");
+    let mut file = match file {
+        Ok(f) => f,
+        // 出现异常直接返回异常
+        Err(e) => return Err(e),
+    };
+
+    let mut s = String::new();
+    // 返回一个Result
+    match file.read_to_string(&mut s) {
+        Ok(_) => Ok(s),
+        Err(e) => Err(e),
+    }
+}
+
+pub fn read_username_from_file1() -> Result<String, Error> {
+    let mut file = File::open("hello.txt")?;
+    let mut s = String::new();
+    file.read_to_string(&mut s)?;
+    Ok(s)
+}
+
+pub fn read_username_from_file2() -> Result<(), Box<dyn Error>> {
+    let mut file = File::open("hello.txt")?;
+    Ok(())
+}
+
+pub fn test_inner_error_handle() {
     let f1 = File::open("hello.txt").unwrap();
     let f2 = File::open("hello.txt").expect("Failed to open");
 }
