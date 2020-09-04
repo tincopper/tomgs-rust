@@ -87,7 +87,7 @@ mod error_handler;
 // 
 mod struct_test;
 mod method_test;
-mod vec_test;
+mod vec_and_iter_test;
 
 fn main() {
     nation::government::govern();
@@ -108,5 +108,5 @@ fn main() {
     // method tests
     method_test::test_area();
     // vec tests
-    vec_test::test_vec();
+    vec_and_iter_test::test_vec();
 }
