@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 /// 智能指针 Box
 pub fn box_test() {
   let b = Box::new(5);
@@ -16,6 +18,32 @@ pub fn deref_test() {
   assert_eq!(5, *z); // ok
 }
 
+/// 自定义智能指针
+pub struct MyBox<T>(T);
+
+impl <T> MyBox<T> {
+  fn new(t: T) -> MyBox<T> {
+    MyBox(t)
+  }
+
+}
+
+/// 实现解引用trait
+impl <T> Deref for MyBox<T> {
+  type Target = T;
+
+  fn deref(&self) -> &T {
+    &self.0
+  }
+}
+
+pub fn my_box_test() {
+  let a = 5;
+  let b = MyBox::new(5);
+
+  assert_eq!(a, *b);
+}
+
 #[cfg(test)]
 mod tests {
   use super::*;
@@ -29,6 +57,11 @@ mod tests {
   #[test]
   fn test_deref() {
     deref_test();
+  }
+
+  #[test]
+  fn test_my_box() {
+    my_box_test();
   }
 
 }
