@@ -1,3 +1,5 @@
+mod pointer_test;
+mod file_test;
 mod iter_custom_test;
 mod trait_test;
 mod async_test;

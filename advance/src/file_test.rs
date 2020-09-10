@@ -1,3 +1,7 @@
+use std::path::Path;
+use std::fs::File;
+use std::error::Error;
+
 pub fn create_file() {
     let path = Path::new("lorem_ipsum.txt");
     let display = path.display();

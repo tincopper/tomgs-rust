@@ -6,11 +6,24 @@ pub fn test_vec() -> Vec<i32> {
     v.push(2);
     v.push(3);
 
+    v.insert(1, 4);
+    v.insert(1, 5);
+
+    for i in 0..v.len() {
+        println!("a[{}] = {}", i, v[i]);
+    }
+
     let rm = v.remove(2);
     println!("remove result: {}", rm);
 
     let result = v.pop();
     println!("pop result： {}", result.unwrap());
+
+    //let result = (0u32..20).map(|f| f + 1).collect();
+    //println!("{}", result);
+
+    let result = (0u32..20).map(|f| f + 1);
+    println!("{:?}", result);
 
     v
 }
