@@ -41,7 +41,7 @@ pub fn my_box_test() {
   let a = 5;
   let b = MyBox::new(5);
 
-  assert_eq!(a, *b);
+  assert_eq!(a, *b); // *b <==> *(b.deref())
 }
 
 #[cfg(test)]
