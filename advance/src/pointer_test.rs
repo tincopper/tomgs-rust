@@ -18,6 +18,7 @@ pub fn deref_test() {
   assert_eq!(5, *z); // ok
 }
 
+/// ------------------------------------------------------------------------------------------------
 /// 自定义智能指针
 pub struct MyBox<T>(T);
 
@@ -41,7 +42,58 @@ pub fn my_box_test() {
   let a = 5;
   let b = MyBox::new(5);
 
-  assert_eq!(a, *b); // *b <==> *(b.deref())
+  assert_eq!(5, a);
+  assert_eq!(5, *b); // *b <==> *(b.deref())
+}
+
+/// ------------------------------------------------------------------------------------------------
+/// Drop trait
+struct CustomSmartPointer {
+  data: String
+}
+
+impl Drop for CustomSmartPointer {
+  fn drop(&mut self) {
+    println!("Dropping CustomSmartPointer data `{}`.", self.data);
+  }
+}
+
+#[test]
+pub fn drop_test() {
+  let a = CustomSmartPointer {data: String::from("a")};
+  let b = CustomSmartPointer {data: String::from("b")};
+  println!("CustomSmartPointer created!");
+}
+
+#[test]
+pub fn drop_test2() {
+  let a = CustomSmartPointer {data: String::from("a")};
+  let b = CustomSmartPointer {data: String::from("b")};
+  println!("CustomSmartPointer created!");
+  drop(b);
+  println!("CustomSmartPointer dropped before the end of main.")
+}
+
+/// ------------------------------------------------------------------------------------------------
+/// 解引用自动转换
+pub fn hello(name: &str) {
+  println!("Hello, {}!", name);
+}
+
+pub fn ref_auto_convert_test() {
+  let name = "tomgs";
+  hello(name);
+
+  let name = String::from("tomgs");
+  hello(&name);
+
+  let name = Box::new(String::from("tomgs"));
+  hello(&name);
+
+  // 如果Rust没有解引用转换功能
+  // (*m)首先将MyBox<String>进行解引用得到String，然后，通过&和[..]来获取包含整个String的字符串切片以便匹配hello函数的签名。
+  let name = Box::new(String::from("tomgs"));
+  hello(&(*name)[..]);
 }
 
 #[cfg(test)]
