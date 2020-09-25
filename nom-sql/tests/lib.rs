@@ -1,10 +1,15 @@
 mod edit_sql;
 
 extern crate nom_sql;
+extern crate nom;
 
 use std::fs::File;
 use std::io::Read;
 use std::path::Path;
+use nom::sequence::tuple;
+use nom::character::complete::{alpha1, digit1, char, digit0};
+use nom::error::ErrorKind;
+use nom::IResult;
 
 fn parse_queryset(queries: Vec<String>) -> (i32, i32) {
     let mut parsed_ok = Vec::new();
@@ -206,4 +211,16 @@ fn parse_select() {
     let (ok, fail) = parse_file("tests/select.txt");
     assert_eq!(fail, 0);
     assert_eq!(ok, 24);
+}
+
+#[test]
+fn parse_tuple() {
+    use crate::nom::character::complete::{alpha1, digit1};
+    use crate::nom::{Err, error::ErrorKind};
+
+    let parser = tuple((alpha1, IResult {"", ".", None}, alpha1));
+
+    assert_eq!(parser("abc.def"), Ok(("", ("abc", ".", "def"))));
+    assert_eq!(parser("123def"), Err(Err::Error(("123def", ErrorKind::Alpha))));
+
 }

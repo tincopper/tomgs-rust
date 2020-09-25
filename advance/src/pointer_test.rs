@@ -1,4 +1,6 @@
 use std::ops::Deref;
+use std::rc::Rc;
+use crate::pointer_test::List::{Cons, Nil};
 
 /// 智能指针 Box
 pub fn box_test() {
@@ -96,6 +98,27 @@ pub fn ref_auto_convert_test() {
   hello(&(*name)[..]);
 }
 
+/// ------------------------------------------------------------------------------------------------
+/// 智能指针Rc<T>
+enum List {
+  Cons(i32, Rc<List>),
+  Nil,
+}
+
+#[test]
+pub fn test_rc() {
+  let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+  println!("count after creating a = {}", Rc::strong_count(&a));
+  let b = Cons(3, Rc::clone(&a));
+  println!("count after creating b = {}", Rc::strong_count(&a));
+  {
+    let c = Cons(4, Rc::clone(&a));
+    println!("count after creating c = {}", Rc::strong_count(&a));
+  }
+  println!("count after c gose out of scope = {}", Rc::strong_count(&a));
+}
+
+/// ------------------------------------------------------------------------------------------------
 #[cfg(test)]
 mod tests {
   use super::*;
