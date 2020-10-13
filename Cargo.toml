@@ -8,5 +8,6 @@ members = [
     "nom-sql",
     "concurrency",
     "oop",
-    "clap_exer"
+    "clap_exer",
+    "db_demo"
 ]
