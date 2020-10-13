@@ -7,5 +7,6 @@ members = [
     "unit-test",
     "nom-sql",
     "concurrency",
-    "oop"
+    "oop",
+    "clap_exer"
 ]
