@@ -51,7 +51,7 @@ extern "C" {
 }
 
 // 其他语言调用rust
-#![crate_type = "staticlib"] //这个要放在文件的函数上面
+//#![crate_type = "staticlib"] //这个要放在文件的函数上面
 #[no_mangle]
 //pub extern "C" fn foo() {
 pub extern fn foo() {

@@ -42,5 +42,3 @@ pub fn test_trait() {
   let res = t.summary();
   println!("new tweet: {}.", res);
 }
-
-/// 高级trait
