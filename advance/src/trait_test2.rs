@@ -50,7 +50,7 @@ impl fmt::Display for Wrapper {
 }
 
 #[test]
-fn newtype_test() {
+fn new_type_test() {
     let wrapper = Wrapper(vec!["a".to_string(), "b".to_string(), "c".to_string()]);
     println!("{}", wrapper);
 }
