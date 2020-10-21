@@ -1,4 +1,4 @@
-use postgres::{Client, NoTls, Row, SimpleQueryMessage};
+use postgres::{Client, NoTls, SimpleQueryMessage};
 
 struct Person {
   id: i32,
@@ -30,22 +30,22 @@ pub fn pg_exer() {
   }
 }
 
-pub fn pg_simple_query() {
+pub fn pg_simple_query(sql: &str) {
   let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#2019 dbname=private_cloud_dev", NoTls).unwrap();
 
   // 简单查询
-  let result = &client.simple_query("/*accountid=123*/SELECT id, name, data FROM person");
+  let result = &client.simple_query(sql);
   match result {
     Ok(r) => {
       for row in r {
         match row {
-          SimpleQueryMessage::Row(query_row)=> {
-            let person = Person {
+          SimpleQueryMessage::Row(query_row) => {
+            /*let person = Person {
               id: query_row.get(0).unwrap().parse::<i32>().unwrap(),
               name: query_row.get(1).unwrap().to_string(),
               data: Some(vec![1, 2, 3]),
-            };
-            println!("Found person {}", person.name);
+            };*/
+            println!("Found data {:?}", query_row.get(0).unwrap().parse::<String>().unwrap());
           },
           _ => {}
         }
@@ -65,7 +65,14 @@ pub fn test() {
 
 #[test]
 pub fn test2() {
-  pg_simple_query();
+  let sql = "/*|id='7aea0712-9f13-4c50-9eb7-906cf4ea55da'||||*/select * from public.users t;";
+  pg_simple_query(sql);
+}
+
+#[test]
+pub fn test3() {
+  let sql = "select * from public.users t;";
+  pg_simple_query(sql);
 }
 
 #[test]
