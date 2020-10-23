@@ -1,3 +1,5 @@
+mod fn_test;
+mod custom_error;
 mod pointer_test;
 mod file_test;
 mod iter_custom_test;
