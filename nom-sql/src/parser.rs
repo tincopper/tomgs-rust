@@ -284,4 +284,14 @@ mod tests {
         assert_eq!(expected0, format!("{}", res0.unwrap()));
         assert_eq!(expected1, format!("{}", res1.unwrap()));
     }
+
+    #[test]
+    fn test_select_1() {
+        let qstring = "SELECT 1";
+        let expected = "SELECT 1";
+
+        let res0 = parse_query(qstring);
+        assert!(res0.is_ok());
+        assert_eq!(expected, format!("{}", res0.unwrap()));
+    }
 }

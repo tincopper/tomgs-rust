@@ -9,3 +9,4 @@ mod vec_and_iter_test;
 pub mod struct_test;
 mod unsafe_test;
 mod trait_test2;
+mod array_test;
