@@ -1,11 +1,12 @@
 [package]
-name = "guessing_game"
+name = "bytes-demo"
 version = "0.1.0"
-authors = ["tomgs <tomgs@qq.com>"]
+authors = ["tomgs <136082619@qq.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rand = "0.5.5"
-
+bytes = "0.6"
+# 开启(反)序列化
+# bytes = { version = "0.6", features = ["serde"] }

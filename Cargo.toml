@@ -9,5 +9,6 @@ members = [
     "concurrency",
     "oop",
     "clap_exer",
-    "db_demo"
+    "db_demo",
+    "bytes-demo"
 ]
