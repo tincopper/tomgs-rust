@@ -10,5 +10,6 @@ members = [
     "oop",
     "clap_exer",
     "db_demo",
-    "bytes-demo"
+    "bytes-demo",
+    "async-std-demo"
 ]
