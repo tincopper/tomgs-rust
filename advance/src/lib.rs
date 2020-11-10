@@ -10,3 +10,4 @@ pub mod struct_test;
 mod unsafe_test;
 mod trait_test2;
 mod array_test;
+mod reflect;

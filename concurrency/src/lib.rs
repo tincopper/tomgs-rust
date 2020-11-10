@@ -1,5 +1,9 @@
 mod global_var_demo;
-mod arc_demo;
+mod thread_safe_share_data_demo;
+mod thread_pool;
+mod thread_local;
+mod cell_refcell;
+mod mpsc_demo;
 
 use std::sync::mpsc;
 use std::thread;

@@ -6,6 +6,7 @@ use std::time::Duration;
 fn main() {
     //test_thread_create();
     test_thread_move();
+    test_builder_thread();
 }
 
 /// 线程创建
@@ -37,4 +38,24 @@ fn test_thread_move() {
     //drop(v);
 
     handler.join().unwrap();
+}
+
+//
+fn test_builder_thread() {
+    let t = thread::Builder::new().name("child1".to_string()).spawn(move || {
+        println!("enter child thread.");
+        thread::park();
+        println!("resume child thread.");
+    }).unwrap();
+
+    println!("spawn a thread.");
+    thread::sleep(Duration::from_secs(5));
+    t.thread().unpark();
+
+    //let current_thread = thread::current();
+    //thread::park_timeout(Duration::from_secs(5));
+    //thread::panicking();
+    //thread::yield_now();
+
+    t.join();
 }
