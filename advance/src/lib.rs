@@ -11,3 +11,5 @@ mod unsafe_test;
 mod trait_test2;
 mod array_test;
 mod reflect;
+mod generics_test;
+mod generics_test2;

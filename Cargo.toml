@@ -11,5 +11,7 @@ members = [
     "clap_exer",
     "db_demo",
     "bytes-demo",
-    "async-std-demo"
+    "async-std-demo",
+    "procedural_macro_main",
+    "procedural_macro_derive"
 ]

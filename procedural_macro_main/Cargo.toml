@@ -1,0 +1,10 @@
+[package]
+name = "procedural_macro_main"
+version = "0.1.0"
+authors = ["tomgs <136082619@qq.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+procedural_macro_derive = { path = "../procedural_macro_derive", version = "0.1.0" }
