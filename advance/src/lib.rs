@@ -13,3 +13,4 @@ mod array_test;
 mod reflect;
 mod generics_test;
 mod generics_test2;
+mod generics_test3;

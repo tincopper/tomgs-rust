@@ -12,7 +12,7 @@ struct Person {
 /// 测试pg数据库操作
 /// https://docs.rs/postgres/0.15.2/postgres/
 pub fn pg_exer() {
-  let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#2019 dbname=private_cloud_dev", NoTls).unwrap();
+  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
 
   // 参数化查询
   let result = &client.query("SELECT id, name, data FROM person", &[]);
@@ -34,8 +34,8 @@ pub fn pg_exer() {
 }
 
 pub fn pg_simple_query(sql: &str) {
-  //let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#2019 dbname=private_cloud_dev", NoTls).unwrap();
-  let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#830c73f3fb22 dbname=jdyapp_shard3", NoTls).unwrap();
+  //let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
+  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#830c73f3fb22 dbname=tomgsapp_shard3", NoTls).unwrap();
 
   // 简单查询
   let result = &client.simple_query(sql);
@@ -64,8 +64,8 @@ pub fn pg_simple_query(sql: &str) {
 
 //  172.20.183.155
 pub fn pg_parse_query(sql: &str, params: &[&(dyn ToSql + Sync)]) {
-  //let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#2019 dbname=private_cloud_dev", NoTls).unwrap();
-  let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#830c73f3fb22 dbname=jdyapp_shard3", NoTls).unwrap();
+  //let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
+  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#830c73f3fb22 dbname=tomgsapp_shard3", NoTls).unwrap();
   //let mut client = Client::connect("postgresql://127.0.0.1:5432/private_cloud_dev?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&currentSchema=kd_1596523828369351661", NoTls).unwrap();
   // 简单查询
   let result = client.query(sql, params);
@@ -84,7 +84,7 @@ pub fn pg_parse_query(sql: &str, params: &[&(dyn ToSql + Sync)]) {
 }
 
 pub fn pg_execute(sql: &str, params: &[&(dyn ToSql + Sync)]) {
-  let mut client = Client::connect("host=localhost user=jdy port=5432 password=Jdy#2019 dbname=private_cloud_dev", NoTls).unwrap();
+  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
   let result = client.execute(sql, params);
 
   println!("result: {:?}", result.unwrap());
@@ -186,7 +186,7 @@ FROM
 WHERE
   t1.fnumber = $1;";
 
-  let number = "kingdeetestzcy";
+  let number = "tomgstestzcy";
   pg_parse_query(sql, &[&number]);
 }
 
@@ -218,7 +218,7 @@ FROM
 WHERE
   t1.fnumber = $1;";
 
-  let number = "kingdeetestzcy";
+  let number = "tomgstestzcy";
   pg_parse_query(sql, &[&number]);
 }
 
