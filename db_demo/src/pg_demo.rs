@@ -66,7 +66,7 @@ pub fn pg_simple_query(sql: &str) {
 pub fn pg_parse_query(sql: &str, params: &[&(dyn ToSql + Sync)]) {
   //let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
   let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#830c73f3fb22 dbname=tomgsapp_shard3", NoTls).unwrap();
-  //let mut client = Client::connect("postgresql://127.0.0.1:5432/private_cloud_dev?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&currentSchema=kd_1596523828369351661", NoTls).unwrap();
+  //let mut client = Client::connect("postgresql://127.0.0.1:5432/private_cloud_dev?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&currentSchema=tomgs", NoTls).unwrap();
   // 简单查询
   let result = client.query(sql, params);
   match result {
@@ -178,11 +178,11 @@ pub fn test8() {
   END AS fdptid,
   udo.forgid forgid
 FROM
-  kd_1596523828369351661.t_sec_user t1
-  INNER JOIN kd_1596523828369351661.t_sec_user_l t2 ON t1.fid = t2.fid
-  LEFT JOIN kd_1596523828369351661.t_sec_userposition pos ON t1.fid = pos.fid
-  LEFT JOIN kd_1596523828369351661.t_bas_userdefaultorg udo ON t1.fid = udo.fuserid
-  LEFT JOIN kd_1596523828369351661.t_sec_user_u t3 ON t1.fid = t3.fid
+  tomgs.t_sec_user t1
+  INNER JOIN tomgs.t_sec_user_l t2 ON t1.fid = t2.fid
+  LEFT JOIN tomgs.t_sec_userposition pos ON t1.fid = pos.fid
+  LEFT JOIN tomgs.t_bas_userdefaultorg udo ON t1.fid = udo.fuserid
+  LEFT JOIN tomgs.t_sec_user_u t3 ON t1.fid = t3.fid
 WHERE
   t1.fnumber = $1;";
 
