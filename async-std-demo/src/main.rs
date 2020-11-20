@@ -1,5 +1,6 @@
 mod client;
 mod server;
+mod lib;
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
 

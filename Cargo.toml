@@ -13,5 +13,6 @@ members = [
     "bytes-demo",
     "async-std-demo",
     "procedural_macro_main",
-    "procedural_macro_derive"
+    "procedural_macro_derive",
+    "config_exer"
 ]
