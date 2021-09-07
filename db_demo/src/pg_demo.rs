@@ -12,7 +12,7 @@ struct Person {
 /// 测试pg数据库操作
 /// https://docs.rs/postgres/0.15.2/postgres/
 pub fn pg_exer() {
-  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=private_cloud_dev", NoTls).unwrap();
+  let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=test", NoTls).unwrap();
 
   // 参数化查询
   let result = &client.query("SELECT id, name, data FROM person", &[]);
@@ -62,7 +62,6 @@ pub fn pg_simple_query(sql: &str) {
 
 }
 
-//  172.20.183.155
 pub fn pg_parse_query(sql: &str, params: &[&(dyn ToSql + Sync)]) {
   let mut client = Client::connect("host=localhost user=tomgs port=5432 password=tomgs#2019 dbname=dev", NoTls).unwrap();
   // 简单查询
