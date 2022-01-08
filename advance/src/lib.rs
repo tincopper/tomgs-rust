@@ -15,3 +15,4 @@ mod generics_test;
 mod generics_test2;
 mod generics_test3;
 mod soaring;
+mod lifetime;
