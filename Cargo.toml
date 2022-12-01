@@ -14,5 +14,6 @@ members = [
     "async-std-demo",
     "procedural_macro_main",
     "procedural_macro_derive",
-    "config_exer"
+    "config_exer",
+    "actix-web-demo"
 ]
