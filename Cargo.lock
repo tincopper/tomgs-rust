@@ -182,13 +182,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "actix-web-demo"
-version = "0.1.0"
-dependencies = [
- "actix-web",
-]
-
-[[package]]
 name = "addr2line"
 version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1061,6 +1054,20 @@ name = "db_demo"
 version = "0.1.0"
 dependencies = [
  "postgres",
+]
+
+[[package]]
+name = "demo0"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+]
+
+[[package]]
+name = "demo1"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
 ]
 
 [[package]]

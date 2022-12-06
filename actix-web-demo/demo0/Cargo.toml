@@ -6,4 +6,4 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web-demo = {path = "../../../actix-web-demo"}
+actix-web = "4.2.1"

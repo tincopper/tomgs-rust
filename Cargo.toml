@@ -15,5 +15,6 @@ members = [
     "procedural_macro_main",
     "procedural_macro_derive",
     "config_exer",
-    "actix-web-demo"
+    "actix-web-demo/demo0",
+    "actix-web-demo/demo1"
 ]
