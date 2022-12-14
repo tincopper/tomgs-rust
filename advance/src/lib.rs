@@ -16,3 +16,4 @@ mod generics_test2;
 mod generics_test3;
 mod soaring;
 mod lifetime;
+mod pattern_match_test;
