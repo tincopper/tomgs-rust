@@ -60,10 +60,10 @@ pub fn test_recovery5() {
     let f = File::open("hello.txt").map_err(|error| {
         if error.kind() == ErrorKind::NotFound {
             File::create("hello.txt").unwrap_or_else(|error| {
-                panic!("create file error: {:?}", e);
+                panic!("create file error: {:?}", error);
             })
         } else {
-            panic!("opening file error: {:?}", other_err)
+            panic!("opening file error: {:?}", error)
         }
     });
 }
@@ -92,7 +92,7 @@ pub fn read_username_from_file1() -> Result<String, Error> {
     Ok(s)
 }
 
-pub fn read_username_from_file2() -> Result<(), Box<dyn Error>> {
+pub fn read_username_from_file2() -> Result<(), Box<dyn std::error::Error>> {
     let mut file = File::open("hello.txt")?;
     Ok(())
 }

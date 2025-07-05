@@ -4,7 +4,7 @@ use tokio::runtime::Runtime;
 use std::io::Result;
 
 async fn function1() -> Result<()> {
-  tokio::time::delay_for(tokio::time::Duration::from_secs(10)).await;
+  tokio::time::sleep(tokio::time::Duration::from_secs(10)).await;
   println!("function1 ++++ ");
   Ok(())
 }

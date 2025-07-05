@@ -218,7 +218,7 @@ fn parse_tuple() {
     use crate::nom::character::complete::{alpha1, digit1};
     use crate::nom::{Err, error::ErrorKind};
 
-    let parser = tuple((alpha1, IResult {"", ".", None}, alpha1));
+    let parser = tuple((alpha1, digit1, alpha1));
 
     assert_eq!(parser("abc.def"), Ok(("", ("abc", ".", "def"))));
     assert_eq!(parser("123def"), Err(Err::Error(("123def", ErrorKind::Alpha))));

@@ -33,7 +33,7 @@ mod tests {
     // 使用Result<T, E>编写测试
     #[test]
     fn it_works_result() -> Result<(), String> {
-        if 2 + 2 = 4 {
+        if 2 + 2 == 4 {
             Ok(())
         } else {
             Err(String::from("error msg"))

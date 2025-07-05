@@ -197,7 +197,9 @@ fn function13() {
 
 fn function14() {
     let a = [1, 2, 3, 4, 5];
-    let index = 10;
+    // 数组越界
+    // let index = 10;
+    let index = 2;
     let e = a[index];
     println!("The value is: {}", e);
 }

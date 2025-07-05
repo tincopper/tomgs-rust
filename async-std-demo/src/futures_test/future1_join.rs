@@ -3,7 +3,7 @@ use tokio::runtime::Runtime;
 
 async fn function1() {
   println!("function1 ++++ ");
-  tokio::time::delay_for(tokio::time::Duration::from_secs(1)).await; //等待一秒钟
+  tokio::time::sleep(tokio::time::Duration::from_secs(1)).await; //等待一秒钟
   function3().await;
 }
 
