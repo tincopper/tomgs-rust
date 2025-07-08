@@ -18,3 +18,4 @@ mod soaring;
 mod lifetime;
 mod pattern_match_test;
 mod union_trait;
+mod union_trait_2;

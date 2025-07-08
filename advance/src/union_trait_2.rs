@@ -31,7 +31,9 @@ fn difference<A, B, C>(container: &C) -> i32 where
     container.last() - container.first()
 }
 
-fn main() {
+
+#[test]
+fn test_union_trait() {
     let number_1 = 3;
     let number_2 = 10;
 
